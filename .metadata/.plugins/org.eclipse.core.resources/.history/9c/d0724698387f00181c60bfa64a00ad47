@@ -1,0 +1,12 @@
+package com.itheima.erp.dao;
+/**
+ * 部门数据访问接口
+ * @author Administrator
+ *
+ */
+public interface DepDao {
+	/**
+	 * 查询全部列表
+	 */
+	public List<Dep> getList();
+}

@@ -1,0 +1,48 @@
+package com.itheima.erp.dao;
+
+import java.util.List;
+
+import com.itheima.erp.entity.Dep;
+
+/**
+ * 部门数据访问接口
+ * @author Administrator
+ *
+ */
+public interface IDepDao {
+	/**
+	 * 条件查询列表
+	 */
+	List<Dep> getList(Dep dep1,Dep dep2,Object param);
+
+	List<Dep> getListBypage(Dep dep1,Dep dep2,Object param,int firstResult, int maxResults);
+	
+	/**
+	 * 统计个数
+	 */
+	Long getCount(Dep dep1,Dep dep2,Object param);
+	
+	/**
+	 * 添加部门
+	 */
+	void add(Dep dep);
+	
+	/**
+	 * 数据回显
+	 */
+	
+	/**
+	 * 修改部门
+	 * @param dep
+	 */
+	void update(Dep dep);
+
+	/**
+	 * 删除
+	 * @param dep
+	 */
+	void delete(Long uuid);
+
+	
+	
+}

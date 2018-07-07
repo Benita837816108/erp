@@ -1,0 +1,24 @@
+package com.itheima.erp.dao.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
+
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+ 
+@SuppressWarnings("unchecked")
+@Repository("depDao")
+public class DepDao extends BaseDao<Dep>  implements IDepDao {
+	
+}

@@ -1,0 +1,9 @@
+package com.itheima.erp.dao.impl;
+
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import com.itheima.erp.dao.IBaseDao;
+
+public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
+
+}

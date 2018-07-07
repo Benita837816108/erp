@@ -1,0 +1,100 @@
+package com.itheima.erp.dao.impl;
+
+import java.util.List;
+
+import javax.annotation.Resource;
+
+import org.apache.commons.lang3.StringUtils;
+import org.hibernate.SessionFactory;
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Order;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import com.itheima.erp.dao.IBaseDao;
+import com.itheima.erp.entity.Dep;
+
+public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
+
+	@Resource(name="sessionFactory")
+	public void setSf(SessionFactory sessionFactory){
+		super.setSessionFactory(sessionFactory);
+	}
+	/**
+	 * 查询条件列表
+	 */
+	
+	@Override
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param) {
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+		return (List<Dep>) getHibernateTemplate().findByCriteria(dc);
+	}
+	
+	/**
+	 * 总记录数
+	 */
+	@Override
+	public Long getCount(Dep dep1,Dep dep2,Object param) {
+		
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+			dc.setProjection(Projections.rowCount());
+			List<?> list = getHibernateTemplate().findByCriteria(dc);
+			return (Long) list.get(0);
+	
+	}
+	
+	/**
+	 * dep记录分页
+	 */
+	@Override
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, Object param,int firstResult, int maxResults) {
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+		return (List<Dep>) getHibernateTemplate().findByCriteria(dc,firstResult,maxResults);
+	
+	}
+
+	
+	
+	/**
+	 * 构建查询方法
+	 */
+	private DetachedCriteria getDetachedCriteria(Dep dep1,Dep dep2,Object param) { 
+		return null;
+	}
+	
+	/**
+	 * 添加部门
+	 */
+	@Override
+	public void add(Dep dep) {
+		getHibernateTemplate().save(dep);
+	}
+	
+	
+	/**
+	 * 数据回显
+	 */
+	@Override
+	public Dep get(Long uuid) {
+		return getHibernateTemplate().get(Dep.class,uuid);
+	}
+	
+	/**
+	 * 修改部门
+	 */
+	@Override
+	public void update(Dep dep) {
+		getHibernateTemplate().update(dep);
+	}
+	
+	/**
+	 * 删除部门
+	 */
+	@Override
+	public void delete(Long uuid) {
+		getHibernateTemplate().delete(this.getHibernateTemplate().get(Dep.class, uuid));
+	}
+
+}

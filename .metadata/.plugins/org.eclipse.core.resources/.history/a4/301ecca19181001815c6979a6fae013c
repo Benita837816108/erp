@@ -1,0 +1,14 @@
+package com.itheima.erp.dao.impl;
+
+
+
+import org.springframework.stereotype.Repository;
+
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+ 
+
+@Repository("depDao")
+public class DepDao extends BaseDao<Dep>  implements IDepDao {
+	
+}

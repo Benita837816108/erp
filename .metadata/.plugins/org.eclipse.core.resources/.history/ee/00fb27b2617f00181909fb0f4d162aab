@@ -1,0 +1,39 @@
+package com.itheima.erp.biz.impl;
+
+import java.util.List;
+
+import com.itheima.erp.biz.DepBiz;
+import com.itheima.erp.dao.DepDao;
+import com.itheima.erp.entity.Dep;
+/**
+ * 业务逻辑类
+ * @author Administrator
+ *
+ */
+public class DepBizImpl implements DepBiz {
+	
+	private DepDao depDao;
+	
+
+	public void setDepDao(DepDao depDao) {
+		this.depDao = depDao;
+	}
+
+	@Override
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param) {
+		return depDao.getList(dep1,dep2,param);
+	}
+
+	@Override
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, Object param, int firstResult, int maxResults) {
+		
+		return depDao.getListBypage(dep1,dep2,firstResult,maxResults);
+	}
+
+	@Override
+	public Long getCount(Dep dep1, Dep dep2, Object param) {
+		// TODO Auto-generated method stub
+		return depDao.getCount(dep1,dep2,firstResult,maxResults);;
+	}
+
+}

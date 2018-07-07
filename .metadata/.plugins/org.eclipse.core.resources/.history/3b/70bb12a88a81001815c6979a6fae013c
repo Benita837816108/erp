@@ -1,0 +1,56 @@
+package com.itheima.erp.biz.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itheima.erp.biz.IBaseBiz;
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+
+public class BaseBiz<T> implements IBaseBiz<T>{
+	@Autowired
+	private IDepDao depDao;
+
+	@Override
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param) {
+		return depDao.getList(dep1,dep2,param);
+	}
+
+	@Override
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, Object param, int firstResult, int maxResults) {
+		
+		return depDao.getListBypage(dep1,dep2,param,firstResult,maxResults);
+	}
+
+	@Override
+	public Long getCount(Dep dep1, Dep dep2, Object param) {
+		return depDao.getCount(dep1,dep2,param);
+	}
+	/**
+	 * 新增业务
+	 */
+	@Transactional(readOnly = false)
+	@Override
+	public void add(Dep dep) {
+		depDao.add(dep);
+	}
+	@Transactional(readOnly = false)
+	@Override
+	public void delete(Long id) {
+		depDao.delete(id);
+	}
+
+	@Override
+	public Dep get(Long id) {
+		return depDao.get(id);
+		
+	}
+	@Transactional(readOnly = false)
+	@Override
+	public void update(Dep dep) {
+		depDao.update(dep);
+	}
+
+}

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.itheima.erp.biz.impl.DepBizImpl"/>
+<fullyQualifiedTypeName name="com.itheima.erp.biz.DepBiz"/>
+<fullyQualifiedTypeName name="org.apache.struts2.ServletActionContext"/>
+<fullyQualifiedTypeName name="org.junit.Test"/>
+<fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+<fullyQualifiedTypeName name="org.springframework.context.support.ClassPathXmlApplicationContext"/>
+<fullyQualifiedTypeName name="com.itheima.erp.entity.Dep"/>
+<fullyQualifiedTypeName name="com.itheima.erp.dao.DepDao"/>
+<fullyQualifiedTypeName name="freemarker.core.ReturnInstruction.Return"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.hibernate.criterion.Projections"/>
+<fullyQualifiedTypeName name="org.hibernate.criterion.DetachedCriteria"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="org.hibernate.criterion.Order"/>
+<fullyQualifiedTypeName name="org.aspectj.weaver.WeakClassLoaderReference"/>
+<fullyQualifiedTypeName name="com.itheima.erp.util.WebUtil"/>
+<fullyQualifiedTypeName name="org.springframework.transaction.annotation.Transactional"/>
+<fullyQualifiedTypeName name="javax.persistence.GeneratedValue"/>
+<fullyQualifiedTypeName name="javax.persistence.GenerationType"/>
+<fullyQualifiedTypeName name="org.apache.struts2.components.Param"/>
+<fullyQualifiedTypeName name="javax.persistence.SequenceGenerator"/>
+<fullyQualifiedTypeName name="org.hibernate.annotations.GenericGenerator"/>
+<fullyQualifiedTypeName name="java.lang.Object"/>
+<fullyQualifiedTypeName name="com.alibaba.fastjson.JSON"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.util.Map"/>
+<fullyQualifiedTypeName name="com.itheima.erp.action.util.WebUtil"/>
+<fullyQualifiedTypeName name="org.springframework.orm.hibernate5.support.HibernateDaoSupport"/>
+<fullyQualifiedTypeName name="java.lang.reflect.ParameterizedType"/>
+<fullyQualifiedTypeName name="com.itheima.erp.biz.IBaseBiz"/>
+<fullyQualifiedTypeName name="com.itheima.erp.biz.impl.BaseBiz"/>
+<fullyQualifiedTypeName name="com.itheima.erp.dao.IBaseDao"/>
+<fullyQualifiedTypeName name="com.itheima.erp.action.BaseAction"/>
+<fullyQualifiedTypeName name="javax.annotation.Resources"/>
+<fullyQualifiedTypeName name="org.apache.commons.lang3.StringUtils"/>
+<fullyQualifiedTypeName name="org.hibernate.criterion.MatchMode"/>
+<fullyQualifiedTypeName name="org.hibernate.criterion.Restrictions"/>
+</qualifiedTypeNameHistroy>

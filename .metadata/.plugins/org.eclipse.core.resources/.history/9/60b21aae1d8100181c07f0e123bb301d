@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>部门管理</title>
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="ui/themes/default/easyui.css">
+</head>
+<script type="text/javascript">
+	var method = "";
+	$(function() {
+		var cfg ={
+			url : 'dep!listByPage.action',
+			columns : [[ {
+				field : 'uuid',title : '部门编号',width : 100}, 
+				{field : 'name',title : '部门名称',width : 100}, 
+				{field : 'tele',title : '部门电话',width : 100,align : 'right'}
+				{field : '--',title : '操作',width : 200,	formatter : function(value, row, index) {
+					var operation = '<a href="javascript:void(0);" onclick="edit(' + row.uuid +')">修改</a> ' + 
+		        	'<a href="javascript:void(0);" onclick="del(' + row.uuid +')">删除</a>';		        	
+		        	return operation;
+				}}				
+				]]
+			,pagination : true//显示底部分页栏
+			,pageSize : 5
+			,pageList : [ 5, 10, 15, 20, 25, 30, 40 ]
+			,toolbar : [ {
+				text : '新增',
+				iconCls : 'icon-add',
+				handler : function() {
+					method = "add";
+					$('#editWindow').dialog('open');
+				}
+			} ]
+		};
+		cfg.singleSelect=true;
+	 $('#dg').datagrid(cfg);
+		//条件查询
+		$("#btnSearch").bind('click', function() {
+			//表单searchForm的数据转换为json对象
+			var formdata = $('#searchForm').serializeJSON();
+			//JSON.stringify用于将json对象转换成json字符串
+			//$('#dg').datagrid('load', formdata); 
+			$.ajax({
+				url : 'dep!listByPage.action',
+				data : formdata,
+				dataType : 'json',
+				type : 'post',
+				success : function(value) {
+					$('#dg').datagrid('loadData', value);
+				}
+			})
+		});
+
+		
+		/**
+		 * 弹窗窗口
+		 */
+
+		$('#editWindow').dialog({
+			title : '编辑',
+			width : 300,
+			height : 150,
+			closed : true, //窗口是否关闭状态     true 弹出窗口  false不弹出窗口
+			modal : true,
+			buttons: [{
+				text:'保存',
+				iconCls:'icon-save',
+				handler:function(){
+					var submitdata=$('#editForm').serializeJSON();
+					$.ajax({
+						url:'dep!' + method + '.action',
+						data:submitdata,
+						dataType:'json', // 把服务端响应回来的数据转成json对象, 默认 string
+						type:'post',
+						success:function(rtn){
+							//{success:true,message:''};
+							$.messager.alert("提示", rtn.message, 'info', function(){
+								if(rtn.success){
+									// 关闭编辑窗口
+									$('#editWindow').dialog('close');
+									// 刷新部门列表
+									$('#dg').datagrid('reload');
+								}
+							});
+						}
+					});
+				}
+			},{
+				text:'关闭',
+				iconCls:'icon-cancel',
+				handler:function(){
+					$('#editWindow').dialog('close');
+				}
+			}]
+		});
+	});
+	/**
+	*删除
+	*/
+	function del(uuid){
+		$.messager.confirm('确认', '确定想要删除吗？', function(yes){
+			if (yes){
+			    var submitdata={};
+			    submitdata.id=uuid;
+				$.ajax({
+					url:'dep!' + method + '.action',
+					data:submitdata,
+					dataType:'json', // 把服务端响应回来的数据转成json对象, 默认 string
+					type:'post',
+					success:function(rtn){
+						//{success:true,message:''};
+						$.messager.alert("提示", rtn.message, 'info', function(){
+							if(rtn.success){
+								// 关闭编辑窗口
+								$('#editWindow').dialog('close');
+								// 刷新部门列表
+								$('#dg').datagrid('reload');
+							}
+						});
+					}
+				});
+			}
+		});
+	}
+
+	/**
+	 * 修改
+	 */
+	function edit(uuid){
+		// 弹出窗口
+		$('#editDlg').dialog('open');
+		// 清空表单内容
+		$('#editForm').form('clear');
+		
+		/* $.ajax({
+			url:'dep!get.action',/**/
+			data:{id:uuid},
+			dataType:'json', // 把服务端响应回来的数据转成json对象, 默认 string
+			type:'post',
+			success:function(rtn){
+				$('#depname').val(rtn.name);
+				$('#deptele').val(rtn.tele);
+			}
+		}); */
+		// 加载回显远程url返回的数据
+		$('#editForm').form('load','dep!get.action?id=' + uuid);
+		//{"name":"管理员组","tele":"000000","uuid":1}
+		//$('#editForm').form('load',{"dep.name":"管理员组","dep.tele":"000000","dep.uuid":1});
+		
+		method = "update";
+	}
+</script>
+<body>
+	<div class="easyui-panel"
+		style="padding-left: 4px; border-bottom: 0px;">
+		<div style="height: 2px;"></div>
+		<form id="searchForm">
+			部门名称:<input name="dep1.name"> 部门电话:<input name="dep1.tele">
+			<button id="btnSearch" type="button">查询</button>
+		</form>
+		<div style="height: 2px;"></div>
+	</div>
+	<table id="dg"></table>
+	<div id="editWindow">
+		<form id="editForm">
+			<table>
+				<tr>
+					<td>部门名称</td>
+					<td><input name="dep.name"><input type="hidden"
+						name="dep.uuid" /></td>
+				</tr>
+				<tr>
+					<td>部门电话</td>
+					<td><input name="dep.tele"></td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,8 @@
+package com.itheima.erp.test;
+
+public class GetDep {
+	@Test
+	public void getList(){
+		
+	}
+}

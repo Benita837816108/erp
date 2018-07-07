@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>部门管理</title>
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<link rel="stylesheet" type="text/css"
+	href="ui/themes/default/easyui.css">
+</head>
+<script type="text/javascript">
+
+</script>
+<body>
+	<div class="easyui-panel"
+		style="padding-left: 4px; border-bottom: 0px;">
+		<div style="height: 2px;"></div>
+		<form id="searchForm">
+			部门名称:<input name="dep1.name"> 部门电话:<input name="dep1.tele">
+			<button id="btnSearch" type="button">查询</button>
+		</form>
+		<div style="height: 2px;"></div>
+	</div>
+	<table id="dg"></table>
+	<div id="editWindow">
+		<form id="editForm">
+			<table>
+				<tr>
+					<td>部门名称</td>
+					<td><input name="dep.name"><input type="hidden"
+						name="dep.uuid" id="depname" /></td>
+				</tr>
+				<tr>
+					<td>部门电话</td>
+					<td><input name="dep.tele" id="deptele"/></td>
+				</tr>
+			</table>
+			
+		</form>
+	</div>
+</body>
+</html>

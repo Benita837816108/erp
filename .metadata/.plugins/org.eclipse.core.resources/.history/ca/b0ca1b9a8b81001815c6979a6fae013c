@@ -1,0 +1,60 @@
+package com.itheima.erp.biz.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itheima.erp.biz.IBaseBiz;
+@SuppressWarnings("rawtypes")
+public class BaseBiz<T> implements IBaseBiz<T>{
+	
+	@Autowired
+	private IBaseDao<T> baseDao;
+
+
+	public void setBaseDao(IBaseDao<T> baseDao) {
+		this.baseDao = baseDao;
+	}
+
+	@Override
+	public List<T> getList(T t1,T t2,Object param) {
+		return baseDao.getList(t1,t2,param);
+	}
+
+	@Override
+	public List<T> getListBypage(T t1, T t2, Object param, int firstResult, int maxResults) {
+		
+		return baseDao.getListBypage(t1,t2,param,firstResult,maxResults);
+	}
+
+	@Override
+	public Long getCount(T t1, T t2, Object param) {
+		return baseDao.getCount(t1,t2,param);
+	}
+	/**
+	 * 新增业务
+	 */
+	@Transactional(readOnly = false)
+	@Override
+	public void add(T t) {
+		baseDao.add(t);
+	}
+	@Transactional(readOnly = false)
+	@Override
+	public void delete(Long id) {
+		baseDao.delete(id);
+	}
+
+	@Override
+	public T get(Long id) {
+		return baseDao.get(id);
+		
+	}
+	@Transactional(readOnly = false)
+	@Override
+	public void update(T t) {
+		baseDao.update(t);
+	}
+
+}

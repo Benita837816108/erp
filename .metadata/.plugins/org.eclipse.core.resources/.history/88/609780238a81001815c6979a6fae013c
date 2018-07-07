@@ -1,0 +1,22 @@
+package com.itheima.erp.biz;
+
+import java.util.List;
+
+
+public interface IBaseBiz<T> {
+	List<T> getList(T t1,T t2,Object param);
+	List<T> getListBypage(T t1,T t2,Object param,int firstResult,int maxResults);
+	Long getCount(T t1,T t2,Object param);
+	void add(T t);
+	void delete(Long id);
+	/**
+	 * 数据回显
+	 * @return 
+	 */
+	T get(Long id);
+	/**
+	 * 修改部门
+	 * @param t
+	 */
+	void update(T t);
+}

@@ -1,0 +1,21 @@
+package com.itheima.erp.dao.impl;
+
+
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.springframework.stereotype.Repository;
+
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+ 
+
+@Repository("depDao")
+public class DepDao extends BaseDao<Dep>  implements IDepDao {
+
+	@Override
+	public DetachedCriteria getDetachedCriteria(Dep t1, Dep t2, Object param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

@@ -1,0 +1,29 @@
+package com.itheima.erp.entity;
+
+public class Dep {
+	private Long uuid;//部门编号
+	private String Name;//部门编号
+	private String tele;//部门编号
+	@Override
+	public String toString() {
+		return "Dep [uuid=" + uuid + ", Name=" + Name + ", tele=" + tele + "]";
+	}
+	public Long getUuid() {
+		return uuid;
+	}
+	public void setUuid(Long uuid) {
+		this.uuid = uuid;
+	}
+	public String getName() {
+		return Name;
+	}
+	public void setName(String name) {
+		Name = name;
+	}
+	public String getTele() {
+		return tele;
+	}
+	public void setTele(String tele) {
+		this.tele = tele;
+	}
+}

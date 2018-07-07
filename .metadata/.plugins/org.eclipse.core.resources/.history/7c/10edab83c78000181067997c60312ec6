@@ -1,0 +1,66 @@
+package com.itheima.erp.dao.impl;
+
+import java.util.List;
+
+import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.MatchMode;
+import org.hibernate.criterion.Projections;
+import org.hibernate.criterion.Restrictions;
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+@re 
+public class DepDaoImpl extends HibernateDaoSupport  implements DepDao {
+
+
+	/**
+	 * 查询条件列表
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param) {
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+		return (List<Dep>) getHibernateTemplate().findByCriteria(dc);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, Object param,int firstResult, int maxResults) {
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+		return (List<Dep>) getHibernateTemplate().findByCriteria(dc,firstResult,maxResults);
+	
+	}
+
+	@Override
+	public Long getCount(Dep dep1,Dep dep2,Object param) {
+		
+		DetachedCriteria dc = getDetachedCriteria(dep1, dep2, param);
+			dc.setProjection(Projections.rowCount());
+			List<?> list = getHibernateTemplate().findByCriteria(dc);
+			return (Long) list.get(0);
+	
+	}
+	
+	/**
+	 * 构建查询方法
+	 */
+	private DetachedCriteria getDetachedCriteria(Dep dep1,Dep dep2,Object param) {
+		//离线动态查询
+		DetachedCriteria dc=DetachedCriteria.forClass(Dep.class);
+		if(dep1!=null){
+			if(dep1.getName()!=null&&dep1.getName().length()>0){
+				dc.add(Restrictions.like("name", dep1.getName(),MatchMode.ANYWHERE));
+			}
+			if(dep1.getTele()!=null&&dep1.getTele().length()>0){
+				dc.add(Restrictions.like("tele", dep1.getTele(),MatchMode.ANYWHERE));
+			}
+		}
+		return dc;
+	}
+
+	@Override
+	public void add(Dep dep) {
+		getHibernateTemplate().save(dep);
+	}
+}

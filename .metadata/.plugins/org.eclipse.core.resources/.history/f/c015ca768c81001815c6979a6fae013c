@@ -1,0 +1,5 @@
+package com.itheima.erp.action;
+
+public class BaseAction<T> {
+
+}

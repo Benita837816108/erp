@@ -1,0 +1,5 @@
+package com.itheima.erp.entity;
+
+public class Dep {
+
+}

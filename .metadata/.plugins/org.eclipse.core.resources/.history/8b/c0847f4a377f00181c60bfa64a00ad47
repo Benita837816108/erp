@@ -1,0 +1,5 @@
+package com.itheima.erp.entity;
+
+public class Dep {
+	private Long uuid;//部门编号
+}

@@ -1,0 +1,5 @@
+package com.itheima.erp.biz;
+
+public interface DepBiz {
+
+}

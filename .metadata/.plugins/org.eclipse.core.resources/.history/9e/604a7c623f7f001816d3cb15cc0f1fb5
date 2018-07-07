@@ -1,0 +1,9 @@
+package com.itheima.erp.biz;
+/**
+ * 查询全部列表
+ * @author Administrator
+ *
+ */
+public interface DepBiz {
+	public List<Dep> getList();
+}

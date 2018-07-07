@@ -1,0 +1,52 @@
+package com.itheima.erp.biz.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.itheima.erp.biz.IDepBiz;
+import com.itheima.erp.dao.IDepDao;
+import com.itheima.erp.entity.Dep;
+/**
+ * 业务逻辑类
+ * @author Administrator
+ *
+ */
+@Service("depBiz")
+public class DepBiz implements IDepBiz {
+	
+	@Autowired
+	private IDepDao depDao;
+
+	@Override
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param) {
+		return depDao.getList(dep1,dep2,param);
+	}
+
+	@Override
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, Object param, int firstResult, int maxResults) {
+		
+		return depDao.getListBypage(dep1,dep2,param,firstResult,maxResults);
+	}
+
+	@Override
+	public Long getCount(Dep dep1, Dep dep2, Object param) {
+		return depDao.getCount(dep1,dep2,param);
+	}
+	/**
+	 * 新增业务
+	 */
+	@Transactional(readOnly = false)
+	@Override
+	public void add(Dep dep) {
+		depDao.add(dep);
+	}
+
+	@Override
+	public void delete(Dep dep) {
+		depDao.delete(dep);		
+	}
+
+}

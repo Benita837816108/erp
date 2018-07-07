@@ -1,0 +1,7 @@
+package com.itheima.erp.biz.impl;
+
+import com.itheima.erp.biz.IBaseBiz;
+
+public class BaseBiz<T> implements IBaseBiz<T>{
+
+}

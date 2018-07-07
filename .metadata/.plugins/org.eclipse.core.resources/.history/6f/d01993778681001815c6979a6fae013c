@@ -1,0 +1,53 @@
+package com.itheima.erp.dao.impl;
+
+import java.util.List;
+
+import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
+
+import com.itheima.erp.dao.IBaseDao;
+
+public class BaseDao<T> extends HibernateDaoSupport implements IBaseDao<T> {
+
+	@Override
+	public List<T> getList(T t1, T t2, Object param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Long getCount(T t1, T t2, Object param) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<T> getListBypage(T t1, T t2, Object param, int firstResult, int maxResults) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void add(T t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public T get(Long uuid) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void update(T t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delete(Long uuid) {
+		// TODO Auto-generated method stub
+		
+	}
+
+}

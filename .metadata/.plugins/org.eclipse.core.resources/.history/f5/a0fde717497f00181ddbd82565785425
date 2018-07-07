@@ -1,0 +1,17 @@
+package com.itheima.erp.test;
+
+import java.util.List;
+
+import org.junit.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import com.itheima.erp.dao.DepDao;
+
+public class GetDep {
+	@Test
+	public void getList(){
+		ApplicationContext ac= new ClassPathXmlApplicationContext("classpath:applicationContext.xml");
+	DepDao depDao=(DepDao) ac.getBean("depDao");
+	}
+}

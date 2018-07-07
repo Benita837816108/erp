@@ -1,0 +1,21 @@
+package com.itheima.erp.dao;
+
+import java.util.List;
+
+import com.itheima.erp.entity.Dep;
+
+/**
+ * 部门数据访问接口
+ * @author Administrator
+ *
+ */
+public interface DepDao {
+	/**
+	 * 条件查询列表
+	 */
+	public List<Dep> getList(Dep dep1,Dep dep2,Object param);
+
+	public List<Dep> getListBypage(Dep dep1, Dep dep2, int firstResult, int maxResults);
+	
+	
+}
